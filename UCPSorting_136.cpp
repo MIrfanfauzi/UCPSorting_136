@@ -34,19 +34,85 @@
 // - selesai
 // 
 // 3. Insertion sort 
-//    karena semakin banyak nomor yang sudah beurutan akan bisa mengurangi nomor komparasi/perbandingan 
+//    insertion sort merupakan sorting paling efisien daripada bubble sort dan selection sort. 
+// Karena semakin banyak nomor yang sudah beurutan akan bisa mengurangi nomor komparasi/perbandingan, sehingga mempermudah insertion dalam melakukan langkah-langkah
 // 
 // 
 // 
 
 // 4. Selection Sort
 
-
-
 #include <iostream>
+using namespace std;
+
+
+int arr[36];
+int ifn, n, j, temp;
+
+void input() {
+    while (true) {
+        cout << " Masukkan banyaknya elemen pada array : ";
+        cin >> n;
+        if (n <= 36)
+            break;
+        else {
+            cout << "\nArray dapat mempunyai maksimal 36 elemen. ";
+
+        }
+    }
+    cout << endl;
+    cout << "=====================" << endl;
+    cout << "Masukkan Elemen Array" << endl;
+    cout << "=====================" << endl;
+
+    for (int ifn = 0; ifn < n; ifn++) {
+        cout << " Data ke-" << (ifn + 1) << ": ";
+        cin >> arr[ifn];
+
+    }
+
+}
+
+void SelectionSort(int arr[36], int n) {
+
+    for (int j = 0; j < n - 2; j++) {
+        int min_Index = j;
+        for (int ifn = j + 1; ifn < n; ifn++) {
+            if (arr[ifn] < arr[min_Index]) {
+                min_Index = ifn;
+
+            }
+
+        }
+
+        swap(arr[min_Index], arr[j]);
+    }
+
+}
+
+
+
+
+void display() {
+    cout << endl;
+    cout << "===================================" << endl;
+    cout << "Element Array yang telah tersusun " << endl;
+    cout << "===================================" << endl;
+    for (int j = 0; j < n; j++) {
+        cout << arr[j] << endl;
+    }
+    cout << "Jumalah pass = " << n - 1 << endl;
+    cout << endl;
+}
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
-}
+    
+    input();
+    SelectionSort();
+    display();
 
+
+    return 0;
+}
